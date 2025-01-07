@@ -61,7 +61,7 @@ console.log(dt.toLocaleDateString());
 
 // arrays
 
-let myarray = [0,1,2,3,4,5]
+//let myarray = [0,1,2,3,4,5]
 
 /*
 myarray.push(6)
@@ -144,3 +144,316 @@ console.log(Array.from("arrayexample"))
 console.log(Array.of(name,age,sex))
 
 */
+
+// Ojjects created from constructor (nw object) are not singleton while object literals are singleton. 
+
+// object literals - Best for objects that don’t require multiple instances.
+// Object literals naturally create a singleton because they always return the same reference:
+
+/*
+const myUser = {
+    name:"Sandeep",
+    age:"39",
+    greet:function(){console.log("Greet Sandeep")}
+}
+
+myUser.greet();
+console.log(myUser["age"]);
+console.log(myUser.name);
+*/
+// Objects Created Using constructor function - new keword - Allows creating multiple objects with the same structure.
+// Saves memory if methods are placed in the prototype instead of the instance.
+//Useful when needing to create structured objects dynamically.
+
+/*
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+    this.greet = function() {
+        console.log("Hello, " + this.name);
+    };
+}
+const person1 = new Person("Alice", 25);
+const person2 = new Person("Bob", 40);
+
+person1.greet(); // Output: Hello, Alice
+person2.greet(); // Output: Hello, Bob
+
+*/
+
+// Objects Created Using  class -More structured and readable than constructor functions.
+// Supports inheritance via extends.
+/*
+class Person {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    
+    greet() {
+        console.log("Hello, " + this.name);
+    }
+}
+
+const person3 = new Person("Charlie", 28);
+person3.greet(); // Output: Hello, Charlie
+
+const user = new Object()
+*/
+
+
+
+// add symbol in keys 
+
+/*
+const exSymb = Symbol("key1")
+
+const exObj = {
+
+    name: "ExampleObject",
+    age:30,
+    [exSymb]:"SymbolkeyVal"
+}
+
+console.log(exObj[exSymb]);
+
+// object freezing
+
+Object.freeze(exObj);
+*/
+
+/*
+
+
+oj1 = {1:"a",2:"b",3:"c"}
+oj2 = {4:"d",5:"e",6:"f"}
+
+oj3 = {oj1, oj2}
+
+//console.log(oj3);
+
+oj3 = Object.assign({},oj1,oj2)
+//console.log(oj3);
+
+oj3 = {...oj1, ...oj2}
+//console.log(oj3);
+
+let arrObj = [
+    {1:"a"},{2:"b"},{3:"c"}
+]
+
+console.log(Object.keys(arrObj));
+console.log(Object.values(arrObj));
+console.log(arrObj.entries(arrObj));
+
+*/
+
+/* destructuring
+const course = {
+    name:"js", 
+    price:"170", 
+    teacher:"abc"
+}
+
+console.log(course.teacher);
+
+const {teacher} = course
+
+console.log(teacher);
+
+const {teacher: instructor} = course
+
+console.log(instructor);
+
+*/
+
+// ... rest and spread operator
+// spread functionality is already used above examples while joining arrays or objects 
+
+/*
+
+function calculate_sum(num)
+{
+    return num    
+}
+
+console.log(calculate_sum(5));
+
+
+function calculate_sum(...num)
+{
+    return num    
+}
+
+console.log(calculate_sum(5,6,7));
+
+*/
+
+/* 
+//arrow functions 
+function greet2()
+{
+    return "Hello from greet2"
+}
+console.log(greet2());
+
+const fGrt2 = function greet2()
+{
+    return "Hello from greet2-1"
+}
+
+console.log(fGrt2());
+
+const fGrt3 = function ()
+{
+    return "Hello from greet2-2"
+}
+
+console.log(fGrt3());
+
+const fGrt4 = () =>
+{
+    return "Hello from greet2-3"
+}
+
+console.log(fGrt4());
+
+const fGrt5 = (num1,num2) =>
+    {
+        return num1+num2
+    }
+    
+console.log(fGrt5(1,2));
+
+//implicit return -1 
+const fGrt6 = (num1,num2) => num1+num2
+console.log(fGrt6(2,2));
+
+//implicit return -2
+const fGrt7 = (num1,num2) => (num1+num2)
+console.log(fGrt7(2,3));
+
+// in case curly braces are warpped around the return parameters then return keyworid is must
+const fGrt8 = (num1,num2) => {return num1+num2}
+console.log(fGrt8(3,3));
+
+// returning an object 
+const fGrt9 = (num1,num2) => ({1:num1,2:num2})
+console.log(fGrt9(3,4));
+
+
+const myarr = [1,2,3,4,5]
+
+myarr.forEach(function(x){console.log(x);})
+
+myarr.forEach((x)=>{console.log(x);})
+
+myarr.forEach((x)=>console.log(x))
+*/
+
+/*
+    IFFE 
+(function db(){
+    console.log("DB connected")
+})();
+
+
+(()=>{
+    console.log("DB connected-2")
+})();
+
+(()=> console.log("DB connected-3"))();
+
+
+((name)=> console.log(`DB connected-3 - ${name}`))("Sandeep");    
+*/
+
+
+
+/*
+// falsy values 0,-0,bigint,"",null, undefined, NaN
+
+// truthy values "0", `false`, " ", [],{},function(){}
+
+// Iterators
+
+// for-of
+
+let myArr2 = [1,2,3,4];
+
+for(x of myArr2)
+{
+    console.log(x)
+}
+
+// maps
+
+const map = new Map()
+
+map.set('name', 'Alice');
+map.set('age', 30);
+map.set('job', 'Engineer');
+
+for([key,value] of map)
+    console.log(key + "-"+ value)
+    
+oj4 = {1:"a",2:"b",3:"c"}
+
+// for-in
+for([key] in oj4)
+    console.log(key + "-")
+
+// for-each
+
+let myArr5 = [1,2,3,4,5]
+
+//myArr5.forEach(function(x){console.log(`item=${x}`)})
+//myArr5.forEach((x)=>console.log(`item=${x}`))
+
+function printMe(x)
+{console.log(`from print me item = ${x}`);}
+
+myArr5.forEach(printMe)
+
+
+*/
+
+/*
+// filter , maps 
+
+let myArr6 = [1,2,3,4,5,6];
+
+let newnums = myArr6.filter((x)=>x>4)
+
+console.log(newnums)
+
+let newNums2 = myArr6.map((x)=>x + 5)
+
+console.log(newNums2)
+
+// chaining
+let newNums3 = myArr6.map((x)=>x + 1).map((x) => x*2).filter((x)=>x<15)
+
+console.log(newNums3)
+*/
+
+
+// reduce function 
+
+const myNums = [1,2,3]
+const initialVal = 0
+const myTotal = myNums.reduce(function(acc,curr){return acc + curr},initialVal)
+
+console.log(myTotal);
+
+let shippingCart = [
+                    {itemName:"item1", itemVal:30},
+                    {itemName:"item2", itemVal:40},
+                    {itemName:"item3", itemVal:20}
+                   ]
+initialTot = 0
+
+totalBillAmnt = shippingCart.reduce(function(acc,curr){return acc + curr.itemVal},initialTot)
+
+console.log(`total billing amount = ${totalBillAmnt}`)
+
