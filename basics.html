@@ -2,9 +2,64 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Dom learning</title>
+    <title id="idTitle">Dom learning</title>
 </head>
 <body>
     <div class="bg-black"></div>
+    <h1 id="idh1" class="clsh1">Heading1 <span hidden="True"> hiddent heading</span></h1>
+    <h1 id="idh2" class="clsh2">Heading2</h1>
+    <h1 id="idh3" class="clsh3">Heading3</h1>
+    <h1 id="idh4" class="clsh4">Heading4</h1>
+    <h1 id="idh5" class="clsh5">Heading5</h1>
 </body>
+<script>
+
+    let idTitle =  document.getElementById('idTitle');
+
+    console.log(`Inner text of the title is ${idTitle.innerText}`)
+    console.log(`Inner HTML of the title is ${idTitle.innerHTML}`)
+    console.log(`Text Content of the title is ${idTitle.textContent}`)
+
+    let idH1 =  document.getElementById('idh1');
+    // innertext contains the text which will be visible in the output based on the properties like in this case 
+    // span is hidden therefore only text visible to user is Heading1
+    console.log(`Inner text of the h1 is ${idH1.innerText}`)
+    // Inner HTML provides the full text alog with any html embedded in the text. 
+    console.log(`Inner HTML of the h1 is ${idH1.innerHTML}`)
+    // inner content provided all the text content present irrespective of the values of the properties 
+    // here the hidden content will also be logged irrespective of whether the visibility is true or not
+    console.log(`Text Content of the h1 is ${idH1.textContent}`)
+
+    console.log(document.getElementById('idh1').className)
+    // getElementById returns the element
+    console.log(document.getElementById('idh1').getAttribute('class'))
+    //getElementsByClassName return html collection 
+    console.log(document.getElementsByClassName('clsh2')[0].getAttribute('id'))
+    console.log(document.getElementsByClassName('clsh2').idh2)
+    console.log("query selector");
+    
+    console.log(document.querySelector('h1'));
+
+    console.log("query selector all");
+    console.log(document.querySelectorAll('h1'));
+
+    console.log("query selector for id ");
+    console.log(document.querySelector('#idh1'));
+
+    console.log("query selector for class ");
+    console.log(document.querySelector('.clsh1'));
+
+    // create element
+    console.log("create element");
+    const div = document.createElement('div')
+    div.id="iddiv";
+    div.className="clsdiv";
+    div.setAttribute("title","generate title");
+    //div.innerText = "this is new div"
+    const addText = document.createTextNode("This is new text from node")
+    div.appendChild(addText)
+    document.body.appendChild(div)
+
+
+</script>
 </html>
