@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <ul id="ulId">
+            <li><img width="200px" id="img1" onclick="approach1_click()" alt="" src="https://github.com/yavuzceliker/sample-images/blob/main/images/image-1.jpg?raw=true"> </li>
+            <li><img width="200px" id="img2" alt="" src="https://github.com/yavuzceliker/sample-images/blob/main/images/image-101.jpg?raw=true"> </li>
+            <li><img width="200px" id="img3" alt="" src="https://github.com/yavuzceliker/sample-images/blob/main/images/image-103.jpg?raw=true"> </li>
+            <li> <a href="https://google.com" id="googleId">Google</a></li>
+        </ul>
+    </div>
+</body>
+<script>
+    // approach 1 onClick event in the html tag    
+    function approach1_click()  {    alert("Approach 1 clicked")  }
+    // approach 2 setting onclick in the script    
+    //document.getElementById('img2').onclick =  function approach1_click()  {    alert("Approach 2 clicked")  }
+    // approach 2 setting onclick in the script through addEventListner as it provides extra features
+    //document.getElementById('img3').addEventListener('click',function(e){alert("Approach 3 clicked")},false)
+
+    // older methods attachEvent
+
+    // Event propogation- event bubbling and event capturing
+
+    // Event bubling is execution of events from smaller bubble to larger bubble here it is 
+    // from Image to UL that is first image click functionality will be run and then ul. 
+
+    //document.getElementById('ulId').addEventListener('click',function(e){alert("UL clicked")},false)
+    //document.getElementById('img3').addEventListener('click',function(e){alert("Image 3 clicked")},false)
+
+    //event capturing is when its opposite behavior is required. It is achieved by making the last parameter to true
+
+   // document.getElementById('ulId').addEventListener('click',function(e){alert("UL clicked")},true)
+   // document.getElementById('img3').addEventListener('click',function(e){alert("Image 3 clicked")},true)
+
+    // event propogation (both the event bubbling and event capturing) can be stopped by event parameter (stopPropagation)
+    document.getElementById('img3').addEventListener('click',function(e){alert("Image 3 clicked")
+    e.stopPropagation    },true)
+
+    // prevent default behavior for example the 
+    // default behavior of the link is to navigate to link. to stop defaultPrevented can be used
+    // default behavior of the form is to get submitted. to stop form to be submitted to server and to be only used in the javascripr
+    // defaultPrevented can be used 
+
+    document.getElementById("googleId").addEventListener("click",(e)=>{
+        e.preventDefault();
+        alert("PreventedDefaultBehavior")
+    },false)
+    
+</script>
+</html>
