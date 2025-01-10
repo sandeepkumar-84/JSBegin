@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <button id="btnStart"> Start</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button id="btnStop"> Stop</button>
+                </td>
+            </tr>            
+        </table>
+    </div>
+    <script>
+        let colorIntv = null;
+        function generateHex()
+        {
+            hexcodes="0123456789ABCDEF";
+            let randomCode = "#";
+            for(let i=0;i<6;i++)
+            {
+                randomCode += hexcodes[Math.floor(Math.random()*16)];
+            }            
+            return randomCode
+        }        
+
+        document.getElementById("btnStart").addEventListener('click',function(e){
+            if(colorIntv == null)            
+            colorIntv = setInterval(function(){                
+                document.body.style.backgroundColor = generateHex()
+            },1000)            
+        },false)
+
+        document.getElementById("btnStop").addEventListener("click",function(e){
+            if(colorIntv != null)
+            {    console.log(colorIntv)           
+                clearInterval(colorIntv);
+                colorIntv = null;
+            }            
+        })
+
+    </script>
+</body>
+</html>
