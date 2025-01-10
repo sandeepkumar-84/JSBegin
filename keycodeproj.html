@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="divId"></div>
+    
+</body>
+<script>
+    divid = document.getElementById('divId');
+    
+    window.addEventListener('keydown',(e)=>{
+        console.log(e.key)
+        divid.innerHTML=`
+        <div>
+            <table> 
+                    <tr>
+            <td style="border: 1px solid black;">
+                    "key"
+            </td>
+            <td style="border: 1px solid black;">
+                "keyCode"
+        </td>           
+        <td style="border: 1px solid black;">
+            "Code"
+     </td>         
+        </tr>            
+                <tr>
+                    <td style="border: 1px solid black;">${e.keyCode == 32 ? "Space": e.key}</td>    
+                    <td style="border: 1px solid black;">${e.keyCode}</td>    
+                    <td style="border: 1px solid black;">${e.code}</td>    
+                </tr>
+            </table>
+        </div>
+        `
+    })
+</script>
+</html>
