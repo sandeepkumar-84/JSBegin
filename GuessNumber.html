@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body >
+    <div style="justify-content: center;align-self: center;">
+        <table>
+            <tr>
+                <td>
+                    <h1> Guess a number</h1>
+                </td>
+                <td>
+                    <input type="text" id="idText"></input>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><button id="sbmtBtn" title="Submit" style="width: 100%;">Submit</td>
+            </tr>
+            <tr>
+                <td  colspan="2" id="idPrevGuesses">
+                    Prev Guesses <span id="pgSp"></span>
+                </td>                
+            </tr>
+            <tr>
+                <td  colspan="2" id="idRemGuesses">
+                    Remaining Guesses <span id="rgSp"></span>
+                </td>
+            </tr> 
+            <tr>
+                <td  colspan="2" id="idError">
+                    <span id="errSp"></span>
+                </td>
+            </tr>       
+            <tr>
+                <td  colspan="2" id="idRes">
+                    random number <span id="res"></span>
+                </td>
+            </tr>                                    
+        </table>
+    </div>
+    <script src="GuessNumber.js">
+</body>
+</html>
