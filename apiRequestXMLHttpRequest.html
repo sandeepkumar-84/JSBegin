@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button id="btnSend" type="button"> Send API Request</button>
+    </div>
+    <div>
+        <textarea id="txta" style="height: 80px;width: 300px;"></textarea>
+    </div>
+    <div>
+        <textarea id="txtr" style="height: 300px;width: 300px;"></textarea>
+    </div>
+    
+    <script>
+        /*
+            Used in past
+            The XMLHttpRequest API enables web apps to make HTTP requests to web servers and receive 
+            the responses programmatically using JavaScript. This in turn enables a website to update just part of 
+            a page with data from the server, rather than having to navigate to a whole new page. 
+            This practice is also sometimes known as AJAX.
+
+            XMLHttpRequest (XHR) objects are used to interact with servers. 
+            You can retrieve data from a URL without having to do a full page refresh. 
+            It can be used to retrieve any type of data, not just XML.
+
+            The Fetch API is the more flexible and powerful replacement for the XMLHttpRequest API. 
+            The Fetch API uses promises instead of events to handle asynchronous responses, 
+            integrates well with service workers, and supports advanced aspects of HTTP such as CORS. 
+            For these reasons, the Fetch API is usually used in modern web apps instead of XMLHttpRequest.
+        */
+
+        const btnSendId = document.getElementById('btnSend')
+        const txtaId = document.getElementById('txta')
+        const txtrId = document.getElementById('txtr')
+
+        
+        const url =
+        "https://raw.githubusercontent.com/mdn/content/main/files/en-us/_wikihistory.json";
+
+        function addListneres(xhr)
+        {
+            xhr.addEventListener("loadstart", handleEvent);
+            xhr.addEventListener("load", handleLoadEvent);
+            xhr.addEventListener("loadend", handleEvent);
+            xhr.addEventListener("progress", handleEvent);
+            xhr.addEventListener("error", handleEvent);
+            xhr.addEventListener("abort", handleEvent);
+            function handleLoadEvent(e)
+            {
+             handleEvent(e)
+             if(xhr.readyState === 4 )
+                {
+                    if (xhr.status === 200) {
+                        txtr.textContent =  xhr.responseText;
+                    } else {
+                        txtr.textContent = xhr.statusText;
+                    }                    
+                }   
+            }
+        }
+        function handleEvent(e)
+        {
+            txtaId.textContent = `${txtaId.textContent}${e.type}: ${e.loaded} bytes transferred\n`;            
+        }
+
+        btnSendId.addEventListener('click',function(e){    
+            const xhr = new XMLHttpRequest();      
+            txtaId.textContent = ""    
+            txtrId.textContent = ""            
+            xhr.open("GET",url)
+            addListneres(xhr);
+            xhr.send();
+
+        })
+
+    </script>
+</body>
+</html>
