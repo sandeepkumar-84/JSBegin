@@ -440,6 +440,7 @@ console.log(newNums3)
 
 // reduce function 
 
+/*
 const myNums = [1,2,3]
 const initialVal = 0
 const myTotal = myNums.reduce(function(acc,curr){return acc + curr},initialVal)
@@ -475,3 +476,45 @@ function setUser(username,password,email)
 const user = new setUser("Saneep","yyyy","z@y")
 console.log(user)
 
+*/
+// getOwnPropertyDescriptor is used to get the properties of the library objects like Math.Pi here 
+// writable is false therefore it cannot be modified. 
+// enumerable is false that is , that property   is not iterable for ex if we iterate through the 
+// vehicle properties except name, all others will be available in the iterator
+
+console.log("before changing properties")
+
+const piDescriptor = Object.getOwnPropertyDescriptor(Math,"PI")
+console.log(piDescriptor)
+
+const vehicle = {
+    name:"Car",
+    mileage:20,
+    isAvailable:true
+}
+
+console.log(Object.getOwnPropertyDescriptor(vehicle,"name"))
+
+for(let [key,value] of Object.entries(vehicle))
+    {
+        console.log(`key = ${key}, value= ${value}`)
+    }
+
+// changing properties 
+
+Object.defineProperty(vehicle,'name',
+    {
+        writable: false,
+        enumerable: false
+    }
+)
+console.log("after changing properties notice in the iteration name is not available")
+console.log(Object.getOwnPropertyDescriptor(vehicle,"name"))
+
+// this wil not print the name
+
+
+for(let [key,value] of Object.entries(vehicle))
+{
+    console.log(`key = ${key}, value= ${value}`)
+}
