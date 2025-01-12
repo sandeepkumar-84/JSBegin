@@ -518,3 +518,61 @@ for(let [key,value] of Object.entries(vehicle))
 {
     console.log(`key = ${key}, value= ${value}`)
 }
+
+// arrays and optimizations 
+
+// arrays are continues(or packed) or holey 
+// optimizations  - SMI, Packed element, double(float, string, function). 
+
+
+const arrTwo = [1,2,3,4,5] // this is an ex of packed SMI Elements since there are no holes in the array
+
+const arrThree =  [1,2,3,4,5,6.5]// this is an ex of packed Double Elements 
+
+const arrFour =  [1,2,3,4,5,6.5,'8']// this is an ex of packed Elements 
+
+arrFour[8] = 11// this is an ex of holey Elements since there is a hole at 8th position and it arr is of mixed types
+
+arrTwo[6] = 6// this is an ex of holey SMI since there is a hole at 5th position and it arr is of purely int type
+
+arrThree[7] = 7// this is an ex of holey double since there is a hole at 6th position and it arr is mix of int and double  only type
+
+console.log(arrFour);
+
+// operations on holey arrays specially holey elemnts are costly
+
+console.log(arrTwo[5]); // this will give undefined and it incolves cost
+
+// bound check - if any index is accessed by array lets for  
+// lets say arrTwo[9] - out of bound check-since 9 is greater than its length it is an easy operation. If not
+// lets say arrTwo[5] - out of bound check will fail since index is within the length of array
+//                     - next step is to check if 5 is any property or not by hasOwnProperty(arrayTwo,5)
+//                     - next step is to check if 5 is any property of its prototype hasOwnPeoprt(arrayTwo.prototype,5)
+// this check will continue till object level
+//                     - next step is to check if 5 is any property of its prototype hasOwnPeoprt(object.prototype,5)
+
+//therefore holey array are quite expensive
+
+// order of optimization
+
+//SMI > Double > Packed
+// Holed_smi > Holed_double > holed_packed
+
+
+// bad exampple 
+
+const arrEx1 = new Array(3) // this will create holey array
+
+arrEx1[0] = '1' // making it Packed since assiging it with string
+arrEx1[0] = '2' //  
+
+// better version
+
+const arrEx2 = []
+arrEx2.push('1')
+arrEx2.push('2')
+arrEx2.push('3')
+
+
+
+
