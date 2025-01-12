@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button id="orange">Orange</button>
+        <button id="green">Green</button>
+    </div>
+    <script>
+        // 01 - adding buttons to change the background 
+       
+        /*
+        document.getElementById('orange').addEventListener('click',function(){
+            document.body.style.backgroundColor = "orange"
+        })
+        document.getElementById('green').addEventListener('click',function(){
+            document.body.style.backgroundColor = "green"
+        })  */
+
+        // 02- in order to add hundreds of buttons generalizing the code
+
+        function handleClick(color)
+        {
+            document.body.style.backgroundColor = `${color}`
+        }
+
+        // below line will not work as onlick redquires a function and below statements will either provide function definition or 
+        // function excution. lets create handleClick1
+        
+        /*
+        document.getElementById('orange').onclick =  handleClick
+        document.getElementById('green').onclick = handleClick
+
+        document.getElementById('orange').onclick =  handleClick("orange")
+        document.getElementById('green').onclick = handleClick("green")
+        */
+
+        function handleClick_modified(color)
+        {
+            return function(){
+                document.body.style.backgroundColor = `${color}`
+            }             
+        }        
+
+        document.getElementById('orange').onclick =  handleClick_modified("orange")
+        document.getElementById('green').onclick = handleClick_modified("green")        
+
+        /*
+            closure can be understood here as color object is only accessible inside the lexical scope of the 
+            handleClick_modified and should not be available outside its scope. 
+            for example if 
+        */
+
+        function outer()
+        {
+            let innervar = "inner"
+            
+            function inner()
+            {
+                // innervar is available to child from paternt outer. 
+                console.log(innervar)
+            }
+            inner()
+        }  
+        
+        outer()
+        // not available  - below will give error      
+        //console.log(innervar)
+
+        // howevere if re inner function is change to be returned 
+
+        function outer_new()
+        {
+            let innervar = "inner new"
+            
+            function inner_new()
+            {
+                // innervar is available to child from paternt outer. 
+                console.log(innervar)
+            }
+            return inner_new;
+        }  
+
+        let on = outer_new()
+        // the whole lexical scope of the function is returned therefore in this way where function is returned 
+        // its inner variables can be utilied like in the color changing example. 
+
+        // implementation is where the function is required to be proided to any property like onlclick etc. 
+        on()
+
+    </script>
+</body>
+</html>
