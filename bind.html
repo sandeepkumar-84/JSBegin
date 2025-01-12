@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btnBind">Bind ex</button>
+    <script>
+        // demonstarting that for ex lets there is a library react (class below) which 
+        // has some properties and its objec is created as soon as jasvascript is executed. also it is attaching necessary events 
+        // to the elements of the html as they are designed. The requirement is to include all the react class properties to be avaiable 
+        // as this to the   elements like button above when it is clicked. usually on the caller context is avaiable. 
+
+        // for example when above button is clicked only the button context will be present in the this parameter in its click handler
+        // however when added bind in the eventlistner will make all the properties of the class , like server etc as conext to this in the clicked event
+        class React{
+            constructor(){
+                this.library="React"
+                this.server="https://localhost:300"
+                document.querySelector('button')
+                .addEventListener('click',this.handleClick.bind(this))                
+            }
+
+            handleClick(){
+                console.log(`clicked`);
+                console.log(this)
+                // this.server is not available until bind is used.
+                console.log(this.server)
+            }            
+        }
+
+        const app = new React()
+    </script>
+</body>
+</html>
