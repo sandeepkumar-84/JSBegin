@@ -457,3 +457,21 @@ totalBillAmnt = shippingCart.reduce(function(acc,curr){return acc + curr.itemVal
 
 console.log(`total billing amount = ${totalBillAmnt}`)
 
+// this and call usage. without call and this property will be unavailable. 
+function setUserName(username)
+{
+    this.username = username
+    console.log("setUserName");
+}
+
+function setUser(username,password,email)
+{
+    console.log("setUser");
+    setUserName.call(this,username)
+    this.password = password
+    this.email = email
+}
+
+const user = new setUser("Saneep","yyyy","z@y")
+console.log(user)
+
