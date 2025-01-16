@@ -6,7 +6,7 @@ if(x == 1 && x ==2 && x==3){console.log("true");}
 
 // in comparison the js converts the variable into string which is overriden below. 
 
-
+/*
 let x={
     flag:1,
     toString: function(){return this.flag++ }
@@ -157,3 +157,117 @@ console.log(numArr)
 
 
 
+//13 
+console.log("Q13")
+
+let nums = [2,2,1,1,1,2,2]
+//console.log(nums.filter((x)=>{return x == 3}));
+
+
+function find_majority(nums)
+{
+    let list = []
+    let setOfNums = new Set(nums)
+    n = nums.length
+    let res
+    setOfNums.forEach(element => {
+        
+        list.push({id:element, freq:nums.filter((x)=>{return x == element}).length})         
+    });
+
+    if(list.filter(function(x){return x.freq > n/2 }).length > 0)
+    {
+        res = list.filter(function(x){return x.freq > n/2 })[0]
+    }
+        
+    return res.id    
+}
+
+find_majority(nums)
+
+
+
+
+function remove_duplicates(duparr)
+{
+    let resultArr = new Set(duparr)    
+    let arr =  [...resultArr] 
+    return arr
+}
+
+// 
+
+let ba  = remove_duplicates([1,1,2])
+
+console.log(ba)
+
+// Given array
+let a = [10, 20, 20, 20, 30, 30, 40, 50];
+
+// Use filter and return array with unique values 
+let a1 = a.filter((e, i, self) => i === self.indexOf(e));
+
+// Display the updated array
+console.log("Updated Array: ", a1);
+
+// 
+
+console.log("14")
+
+Array.prototype.last = function(){
+    
+   return this.length == 0 ? -1 :  this[this.length-1]       
+}
+
+nums = []
+
+console.log(nums.last());
+
+
+var compose = function(functions) {
+    let lf = functions.length
+    let n = lf
+    let fx
+    return function(x) {
+        if(lf <= 0)
+        {
+            return x;
+        }
+        else
+        {
+            let y = x
+            while(n > 0)
+            {
+                fx =  functions[n-1](y)
+                n = n - 1
+                y = fx
+            }
+            return fx
+        }
+    }
+};
+
+
+ const fn = compose([x => x + 1, x => 2 * x])
+ console.log(fn(4)) 
+ */
+
+ var compose = function(functions)
+ {
+    
+    return function(x) {     
+        let l = functions.length 
+        if(l == 0) return x;
+        if(l == 1) return functions[0](x);
+        return functions[0](compose(functions.slice(1,l))(x));
+    }
+    
+ }
+
+
+
+ const fn1 = compose([x => x + 1, x => 2 * x])
+ //fn1(4)
+ console.log(fn1(4)) 
+
+ 
