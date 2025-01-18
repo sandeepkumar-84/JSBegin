@@ -250,7 +250,7 @@ var compose = function(functions) {
 
  const fn = compose([x => x + 1, x => 2 * x])
  console.log(fn(4)) 
- */
+ 
 
  var compose = function(functions)
  {
@@ -268,6 +268,188 @@ var compose = function(functions) {
 
  const fn1 = compose([x => x + 1, x => 2 * x])
  //fn1(4)
- console.log(fn1(4)) 
+ console.log(fn1(4))
 
  
+
+ arr = [0,10,20,30], fn = function greaterThan10(n) { return n > 10; }
+
+ var filter = function(arr, fn) {
+  
+    return arr.filter(fn)
+ };
+
+ console.log(filter(arr, fn))
+
+
+ 
+var map = function(arr, fn) {
+
+    let arr3 = [];
+    arr.forEach((element,value) => {
+        arr3.push(fn(element,value))
+      });     
+
+      return arr3
+}; 
+
+arr = [1,2,3], fn = function plusI(n, i) { return n + i; }
+console.log(map(arr,fn))
+
+
+
+var fibGenerator = function*() {
+    let a =0, b=1
+    while(true)
+    {
+        yield a;
+        [a,b] = [b,a+b]
+    }
+};
+
+const gen = fibGenerator();
+console.log(gen.next().value); // 0
+console.log(gen.next().value); // 1
+console.log(gen.next().value); // 1
+console.log(gen.next().value); // 2
+console.log(gen.next().value); // 3
+
+
+var createCounter = function(init) {
+    
+    let initCounter = init
+    return {
+
+        increment:()=>{ return (initCounter = initCounter + 1)},
+        decrement:()=>{ return (initCounter = initCounter - 1)},
+        reset:()=>{ return (initCounter = init)}
+    }
+};
+
+let cc = createCounter(5)
+
+console.log(cc.increment())
+console.log(cc.increment())
+console.log(cc.decrement())
+console.log(cc.reset())
+
+
+
+var once = function(fn) {
+    
+    let counter
+    return function(...args){
+        
+        if(counter) return;
+        else{            
+            counter = true
+            return fn(...args)               
+        }       
+    }
+};
+
+
+fn = (a,b,c) => (a * b * c)
+
+let onceFn = once(fn)
+
+console.log(onceFn(1, 2, 3))
+console.log(onceFn(5, 7, 4))
+
+
+var chunk = function(arr, size) {
+    
+        if(arr.length > 0 && arr.length <= size ) return [arr]
+        else
+        {  let res = []
+            i=0
+            j = size
+            while(i < arr.length)
+            {          
+                res.push(arr.slice(i,j))
+                i = i+size
+                j = j+size
+            }
+            return res;        
+        }
+};
+
+console.log(chunk([1,2,3,4,5],2))
+
+
+function chunkarr2(arr,size)
+{
+    return arr.reduce(
+        function(prev,curr,i){
+            i % size ==0 ? [...prev,arr.slice(i,i+size)] : prev;  
+        },[])
+}
+
+
+
+function chunkArray(arr, size) {
+    return arr.reduce((chunked, _, i) => 
+        i % size === 0 ? [...chunked, arr.slice(i, i + size)] : chunked
+    , []);
+}
+
+console.log(chunkArray([1, 2, 3, 4, 5, 6, 7], 3));
+
+
+
+class ArrayWrapper  {
+    constructor(arr) {
+        this.arr = arr
+    }
+
+    valueOf(){
+       return  this.arr.reduce(function(acc,curr){
+            return acc = acc + curr            
+        },0)
+    }
+    toString(){
+       return `[${this.arr.join(",")}]`
+    }
+}
+
+const obj = new ArrayWrapper([23,98,42,70]);
+console.log(String(obj));
+
+
+var argumentsLength = function(...args) {
+       
+    return [...args].length
+};
+
+args = [1,2,3]
+//args = [{}, null, "3"]
+console.log(argumentsLength(args))
+
+*/
+
+var expect = function(val) {    
+    
+    return {
+    toBe : function(x)
+    {
+        if(val === x) return true;
+        else
+        {
+            throw new Error("Not Equal")
+        }
+        
+    },
+    notToBe : function(y)
+    {
+        if(val !== y) return true;
+        else
+        {
+            throw new Error("Equal")
+        }
+    }
+    }
+};
+
+console.log(expect(5).toBe(null));
+ 
+
