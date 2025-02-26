@@ -476,7 +476,7 @@ function setUser(username,password,email)
 const user = new setUser("Saneep","yyyy","z@y")
 console.log(user)
 
-*/
+
 // getOwnPropertyDescriptor is used to get the properties of the library objects like Math.Pi here 
 // writable is false therefore it cannot be modified. 
 // enumerable is false that is , that property   is not iterable for ex if we iterate through the 
@@ -573,7 +573,17 @@ arrEx2.push('1')
 arrEx2.push('2')
 arrEx2.push('3')
 
+*/
 
+arrayTodo = [{id:1,todo:"msg1",completed:false},{id:2,todo:"msg2",completed:false}]
+//const todo = "msg3"
+const addTodo = (todo) => {
+    console.log([{id:Date.now(),...todo},...arrayTodo])
+  }
+
+//console.log(arrayTodo)
+
+console.log(addTodo({todo:"msg3", completed: true}))
 
 
 
