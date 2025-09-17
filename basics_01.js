@@ -1,4 +1,4 @@
-console.log("basics 01");
+//console.log("basics 01");
 
 let name = "ethen"
 let age = 29
@@ -31,7 +31,7 @@ you don't need to declare the data type of a variable explicitly
 
 // slice 
 
-// console.log(name.slice(0,2));
+//console.log(name.slice(0,3));
 
 // Math library 
 
@@ -61,54 +61,59 @@ console.log(dt.toLocaleDateString());
 
 // arrays
 
-//let myarray = [0,1,2,3,4,5]
+let myarray = [0,1,2,3,4,5]
 
-/*
-myarray.push(6)
-myarray.pop(6)
 
-console.log(myarray);
+//myarray.push(6)
+//myarray.pop(6)
 
-console.log(myarray.unshift(7));
+//console.log(myarray);
 
-console.log(myarray);
 
-console.log(myarray.shift());
+//console.log(myarray.unshift(7));
 
-console.log(myarray);
+//console.log(myarray);
 
-console.log(myarray.includes(4));
+
+//console.log(myarray.shift());
+
+//console.log(myarray);
+
+/* console.log(myarray.includes(4));
 
 
 let jonedArr = myarray.join()
 
-console.log(jonedArr);
-*/
+console.log(jonedArr); */
+
 
 // diff between slice and splice - splice changes the actual array also. 
 
-/*
-console.log("before");
 
-console.log(myarray);
+// console.log("before slice");
 
-const myarray2 = myarray.slice(1,3)
+// console.log(myarray);
 
-console.log(myarray2);
+// const myarray2 = myarray.slice(1,3)
 
-const myarray3 = myarray.splice(1,3)
+// console.log("after slice - gives a copy of the array");
+// console.log(myarray2);
 
-console.log(myarray2);
+// console.log("before splice");
+// const myarray3 = myarray.splice(1,3)
 
-console.log("after splice ");
+// console.log("after splice returned array ");
+// console.log(myarray3);
 
-console.log(myarray);
+// console.log("after splice - alters the current array");
 
-*/
+// console.log(myarray);
+
+
 
 // Arrays merge etc
 
-/*
+
 let arr1 = [0,1,2,3]
 let arr2 = [4,5,6,7]
 
@@ -117,41 +122,41 @@ const arr4 = ['a','b','c']
 const arr5 = ['e','f','g']
 
 
-arr1.push(arr2)
-arr4.push(arr5)
-console.log(arr1)
-console.log(arr4)
+// arr1.push(arr2)
+// arr4.push(arr5)
+// console.log(arr1)
+// console.log(arr4)
 
 
-arr6 = arr4.concat(arr5)
+// arr6 = arr4.concat(arr5)
 
-console.log(arr6);
+// console.log(arr6);
 
 // Spread out & flat
-const arrMerge = [...arr4, ...arr5]
+// const arrMerge = [...arr4, ...arr5]
 
-console.log(arrMerge);
+// console.log(arrMerge);
 
-// flat 
+// // flat 
 
-arrComplex = [  1,2,3,[4,5,6],7,[8,9,[1,2]]]
+// arrComplex = [  1,2,3,[4,5,6],7,[8,9,[1,2]]]
 
-arrFlat = arrComplex.flat(Infinity)
+// arrFlat = arrComplex.flat(Infinity)
 
-console.log(arrFlat);
+// console.log(arrFlat);
 
-console.log(Array.from("arrayexample"))
-console.log(Array.of(name,age,sex))
+// console.log(Array.from("arrayexample"))
+// console.log(Array.of(name,age,sex))
 
-*/
+
 
 // Ojjects created from constructor (nw object) are not singleton while object literals are singleton. 
 
 // object literals - Best for objects that don’t require multiple instances.
 // Object literals naturally create a singleton because they always return the same reference:
 
-/*
-const myUser = {
+
+/* const myUser = {
     name:"Sandeep",
     age:"39",
     greet:function(){console.log("Greet Sandeep")}
@@ -159,14 +164,14 @@ const myUser = {
 
 myUser.greet();
 console.log(myUser["age"]);
-console.log(myUser.name);
-*/
+console.log(myUser.name); */
+
 // Objects Created Using constructor function - new keword - Allows creating multiple objects with the same structure.
 // Saves memory if methods are placed in the prototype instead of the instance.
 //Useful when needing to create structured objects dynamically.
 
-/*
-function Person(name, age) {
+
+/* function Person(name, age) {
     this.name = name;
     this.age = age;
     this.greet = function() {
@@ -178,12 +183,12 @@ const person2 = new Person("Bob", 40);
 
 person1.greet(); // Output: Hello, Alice
 person2.greet(); // Output: Hello, Bob
+ */
 
-*/
 
 // Objects Created Using  class -More structured and readable than constructor functions.
 // Supports inheritance via extends.
-/*
+/* 
 class Person {
     constructor(name, age) {
         this.name = name;
@@ -196,10 +201,10 @@ class Person {
 }
 
 const person3 = new Person("Charlie", 28);
-person3.greet(); // Output: Hello, Charlie
+person3.greet(); // Output: Hello, Charlie */
 
 const user = new Object()
-*/
+
 
 
 
@@ -222,40 +227,40 @@ console.log(exObj[exSymb]);
 Object.freeze(exObj);
 */
 
-/*
 
 
-oj1 = {1:"a",2:"b",3:"c"}
-oj2 = {4:"d",5:"e",6:"f"}
 
-oj3 = {oj1, oj2}
+// oj1 = {1:"a",2:"b",3:"c"}
+// oj2 = {4:"d",5:"e",6:"f"}
 
-//console.log(oj3);
+// oj3 = {oj1, oj2}
 
-oj3 = Object.assign({},oj1,oj2)
-//console.log(oj3);
+// console.log(oj3);
 
-oj3 = {...oj1, ...oj2}
-//console.log(oj3);
+// oj3 = Object.assign({},oj1,oj2)
+// console.log(oj3);
+
+// oj3 = {...oj1, ...oj2}
+// //console.log(oj3);
 
 let arrObj = [
     {1:"a"},{2:"b"},{3:"c"}
 ]
 
-console.log(Object.keys(arrObj));
-console.log(Object.values(arrObj));
-console.log(arrObj.entries(arrObj));
+// console.log(Object.keys(arrObj));
+// console.log(Object.values(arrObj));
+// console.log(arrObj.entries(arrObj));
 
-*/
 
-/* destructuring
-const course = {
+
+//destructuring
+/* const course = {
     name:"js", 
     price:"170", 
     teacher:"abc"
 }
 
-console.log(course.teacher);
+//console.log(course.teacher);
 
 const {teacher} = course
 
@@ -264,34 +269,34 @@ console.log(teacher);
 const {teacher: instructor} = course
 
 console.log(instructor);
+ */
 
-*/
 
 // ... rest and spread operator
 // spread functionality is already used above examples while joining arrays or objects 
 
-/*
-
-function calculate_sum(num)
-{
-    return num    
-}
-
-console.log(calculate_sum(5));
 
 
-function calculate_sum(...num)
-{
-    return num    
-}
+// function calculate_sum(num)
+// {
+//     return num    
+// }
 
-console.log(calculate_sum(5,6,7));
+// console.log(calculate_sum(5));
 
-*/
 
-/* 
+// function calculate_sum(...num)
+// {
+//     return num    
+// }
+
+// console.log(calculate_sum(5,6,7));
+
+
+
+
 //arrow functions 
-function greet2()
+/* function greet2()
 {
     return "Hello from greet2"
 }
@@ -339,125 +344,127 @@ console.log(fGrt8(3,3));
 
 // returning an object 
 const fGrt9 = (num1,num2) => ({1:num1,2:num2})
-console.log(fGrt9(3,4));
+console.log(fGrt9(3,4)); */
 
 
-const myarr = [1,2,3,4,5]
+// const myarr = [1,2,3,4,5]
 
-myarr.forEach(function(x){console.log(x);})
+// myarr.forEach(function(x){console.log(x);})
 
-myarr.forEach((x)=>{console.log(x);})
+// myarr.forEach((x)=>{console.log(x);})
 
-myarr.forEach((x)=>console.log(x))
-*/
-
-/*
-    IFFE 
-(function db(){
-    console.log("DB connected")
-})();
-
-
-(()=>{
-    console.log("DB connected-2")
-})();
-
-(()=> console.log("DB connected-3"))();
-
-
-((name)=> console.log(`DB connected-3 - ${name}`))("Sandeep");    
-*/
+// myarr.forEach((x)=>console.log(x))
 
 
 
-/*
+//    IFFE 
+
+
+// (function db(){
+//     console.log("DB connected")
+// })();
+
+
+// (()=>{
+//     console.log("DB connected-2")
+// })();
+
+// (()=> console.log("DB connected-3"))();
+
+
+// ((name)=> console.log(`DB connected-3 - ${name}`))("Sandeep");    
+
+
+
+
+
 // falsy values 0,-0,bigint,"",null, undefined, NaN
 
 // truthy values "0", `false`, " ", [],{},function(){}
 
 // Iterators
 
-// for-of
+// for-of - best for iterating values of arrays
 
-let myArr2 = [1,2,3,4];
+// let myArr2 = [1,2,3,4];
 
-for(x of myArr2)
-{
-    console.log(x)
-}
+// for(x of myArr2)
+// {
+//     console.log(x)
+// }
 
-// maps
+// maps - for transforming an array
 
-const map = new Map()
+// const map = new Map()
 
-map.set('name', 'Alice');
-map.set('age', 30);
-map.set('job', 'Engineer');
+// map.set('name', 'Alice');
+// map.set('age', 30);
+// map.set('job', 'Engineer');
 
-for([key,value] of map)
-    console.log(key + "-"+ value)
+// for([key,value] of map)
+//     console.log(key + "-"+ value)
     
-oj4 = {1:"a",2:"b",3:"c"}
+// oj4 = {1:"a",2:"b",3:"c"}
 
-// for-in
-for([key] in oj4)
-    console.log(key + "-")
+// for-in Mainly used for enumerating object properties.
+// for([key] in oj4)
+//     console.log(key + "-")
 
-// for-each
+// for-each - Executes a function for each element.
 
 let myArr5 = [1,2,3,4,5]
 
 //myArr5.forEach(function(x){console.log(`item=${x}`)})
 //myArr5.forEach((x)=>console.log(`item=${x}`))
 
-function printMe(x)
-{console.log(`from print me item = ${x}`);}
+// function printMe(x)
+// {console.log(`from print me item = ${x}`);}
 
-myArr5.forEach(printMe)
+// myArr5.forEach(printMe)
 
 
-*/
+
+
+// filter  - Creates a subset array based on a condition.
+
+// let myArr6 = [1,2,3,4,5,6];
+
+// let newnums = myArr6.filter((x)=>x>4)
+
+// console.log(newnums)
+
+// let newNums2 = myArr6.map((x)=>x + 5)
+
+// console.log(newNums2)
+
+// // chaining
+// let newNums3 = myArr6.map((x)=>x + 1).map((x) => x*2).filter((x)=>x<15)
+
+// console.log(newNums3)
+
+
+
+// reduce function  - Combines array elements into a single value (sum, product, object, array, etc.). Very flexible for calculations and transformations.
+
+
+// const myNums = [1,2,3]
+// const initialVal = 0
+// const myTotal = myNums.reduce(function(acc,curr){return acc + curr},initialVal)
+
+// console.log(myTotal);
+
+// let shippingCart = [
+//                     {itemName:"item1", itemVal:30},
+//                     {itemName:"item2", itemVal:40},
+//                     {itemName:"item3", itemVal:20}
+//                    ]
+// initialTot = 0
+
+// totalBillAmnt = shippingCart.reduce(function(acc,curr){return acc + curr.itemVal},initialTot)
+
+// console.log(`total billing amount = ${totalBillAmnt}`)
 
 /*
-// filter , maps 
-
-let myArr6 = [1,2,3,4,5,6];
-
-let newnums = myArr6.filter((x)=>x>4)
-
-console.log(newnums)
-
-let newNums2 = myArr6.map((x)=>x + 5)
-
-console.log(newNums2)
-
-// chaining
-let newNums3 = myArr6.map((x)=>x + 1).map((x) => x*2).filter((x)=>x<15)
-
-console.log(newNums3)
-*/
-
-
-// reduce function 
-
-/*
-const myNums = [1,2,3]
-const initialVal = 0
-const myTotal = myNums.reduce(function(acc,curr){return acc + curr},initialVal)
-
-console.log(myTotal);
-
-let shippingCart = [
-                    {itemName:"item1", itemVal:30},
-                    {itemName:"item2", itemVal:40},
-                    {itemName:"item3", itemVal:20}
-                   ]
-initialTot = 0
-
-totalBillAmnt = shippingCart.reduce(function(acc,curr){return acc + curr.itemVal},initialTot)
-
-console.log(`total billing amount = ${totalBillAmnt}`)
-
 // this and call usage. without call and this property will be unavailable. 
 function setUserName(username)
 {
@@ -476,49 +483,50 @@ function setUser(username,password,email)
 const user = new setUser("Saneep","yyyy","z@y")
 console.log(user)
 
-
+*/
 // getOwnPropertyDescriptor is used to get the properties of the library objects like Math.Pi here 
 // writable is false therefore it cannot be modified. 
 // enumerable is false that is , that property   is not iterable for ex if we iterate through the 
 // vehicle properties except name, all others will be available in the iterator
 
-console.log("before changing properties")
+// console.log("before changing properties")
 
-const piDescriptor = Object.getOwnPropertyDescriptor(Math,"PI")
-console.log(piDescriptor)
+// const piDescriptor = Object.getOwnPropertyDescriptor(Math,"PI")
+// console.log(piDescriptor)
 
-const vehicle = {
-    name:"Car",
-    mileage:20,
-    isAvailable:true
-}
+// const vehicle = {
+//     name:"Car",
+//     mileage:20,
+//     isAvailable:true
+// }
 
-console.log(Object.getOwnPropertyDescriptor(vehicle,"name"))
+// console.log(Object.getOwnPropertyDescriptor(vehicle,"name"))
 
-for(let [key,value] of Object.entries(vehicle))
-    {
-        console.log(`key = ${key}, value= ${value}`)
-    }
+// for(let [key,value] of Object.entries(vehicle))
+//     {
+//         console.log(`key = ${key}, value= ${value}`)
+//     }
 
-// changing properties 
+// // changing properties 
 
-Object.defineProperty(vehicle,'name',
-    {
-        writable: false,
-        enumerable: false
-    }
-)
-console.log("after changing properties notice in the iteration name is not available")
-console.log(Object.getOwnPropertyDescriptor(vehicle,"name"))
+// Object.defineProperty(vehicle,'name',
+//     {
+//         writable: false,
+//         enumerable: false
+//     }
+// )
+// console.log("after changing properties notice in the iteration name is not available")
+// console.log(Object.getOwnPropertyDescriptor(vehicle,"name"))
 
-// this wil not print the name
+// // this wil not print the name
 
 
-for(let [key,value] of Object.entries(vehicle))
-{
-    console.log(`key = ${key}, value= ${value}`)
-}
+// for(let [key,value] of Object.entries(vehicle))
+// {
+//     console.log(`key = ${key}, value= ${value}`)
+// }
 
+/*
 // arrays and optimizations 
 
 // arrays are continues(or packed) or holey 
@@ -573,7 +581,7 @@ arrEx2.push('1')
 arrEx2.push('2')
 arrEx2.push('3')
 
-*/
+
 
 arrayTodo = [{id:1,todo:"msg1",completed:false},{id:2,todo:"msg2",completed:false}]
 //const todo = "msg3"
@@ -584,9 +592,11 @@ const addTodo = (todo) => {
 //console.log(arrayTodo)
 
 console.log(addTodo({todo:"msg3", completed: true}))
+*/
 
 
-
+const user_singleton  = new Object()
+const user_literal = {} 
 
 
 
